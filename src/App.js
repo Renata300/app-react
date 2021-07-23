@@ -1,10 +1,14 @@
 import { Button, Container, Form, Grid, Header, Icon, Segment, Statistic } from 'semantic-ui-react';
 import './App.css';
+import ButtonSaveOrCancel from './components/ButtonSaveOrCancel';
+import DisplayBalance from './components/DisplayBalance';
+import MainHeader from './components/MainHeader';
+import NewEnteryForm from './components/NewEnteryForm';
 
 function App() {
   return (
     <Container>
-      <Header as='h1'>My Project</Header>
+      <MainHeader title='My Project'/>
       <Statistic size='small'>
         <Statistic.Label>Your Balance:</Statistic.Label>
         <Statistic.Value>2000</Statistic.Value>
@@ -13,29 +17,15 @@ function App() {
         <Grid columns={2} divided>
           <Grid.Row>
             <Grid.Column>
-              <Statistic size='tiny' color='green'>
-                <Statistic.Label style={{texAlign:'left'}}>
-                  Income:
-                </Statistic.Label>
-                <Statistic.Value>
-                  1.050,00
-                </Statistic.Value>
-              </Statistic>
+              <DisplayBalance title='Income' value='1050.50' color='green'/>
             </Grid.Column>
             <Grid.Column>
-              <Statistic size='tiny' color='red'>
-                <Statistic.Label style={{texAlign:'left'}}>
-                  Expenses:
-                </Statistic.Label>
-                <Statistic.Value>
-                  635,50
-                </Statistic.Value>
-              </Statistic>
+              <DisplayBalance title='Expenses' value='620.45' color='red'/>
             </Grid.Column>
           </Grid.Row>
         </Grid>
       </Segment>
-      <Header as='h3'>History</Header>
+      <MainHeader title='History' type='h3'/>
       <Segment color='red'>
         <Grid columns={3} textAlign='right'>
           <Grid.Row>
@@ -72,20 +62,8 @@ function App() {
           </Grid.Row>
         </Grid>
       </Segment>
-      <Header as='h3'>
-        Add new transaction
-      </Header>
-      <Form unstackable>
-        <Form.Group>
-          <Form.Input icon='tags' width={12} label="Description" placeholder='New shinny thing'/>
-          <Form.Input width={4} label='Value' placeholder='100,00' icon='dollar' iconPosition='left'></Form.Input>
-        </Form.Group>
-        <Button.Group style={{marginTop: 20}}>
-          <Button>Cancel</Button>
-          <Button.Or/>
-          <Button primary>Ok</Button>
-        </Button.Group>
-      </Form>
+      <MainHeader title='Add new transaction' type='h3'/> 
+      <NewEnteryForm />
     </Container>
   );
 }
