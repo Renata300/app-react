@@ -1,9 +1,9 @@
 import React from "react";
 import { Statistic } from "semantic-ui-react";
 
-function DisplayBalance({title, value, color='black'}) {
+function DisplayBalance({title, value, color='black', size='tiny'}) {
   return (
-    <Statistic size="tiny" color={color}>
+    <Statistic size={size} color={color}>
       <Statistic.Label style={{ texAlign: "left" }}>
           {title}
           </Statistic.Label>
