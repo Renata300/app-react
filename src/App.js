@@ -13,15 +13,16 @@ function App() {
 
   //const deleteEntry = (id) => {}  ---> outra forma de fazer
   function deleteEntry(id) {
-    const result = entries.filter(entry => entry.id !== id);
+    const result = entries.filter((entry) => entry.id !== id);
     setEntries(result);
   }
 
-  function addEntery(description, value) {
+  function addEntry(description, value, isExpense) {
     const result = entries.concat({
       id: entries.length+1,
       description,
       value,
+      isExpense
     });
     setEntries(result);
   }
@@ -37,7 +38,7 @@ function App() {
       <EntryLines entries={entries} deleteEntry={deleteEntry}/>
 
       <MainHeader title="Add new transaction" type="h3" />
-      <NewEnteryForm addEntery={addEntery} />
+      <NewEnteryForm addEntry={addEntry} />
     </Container>
   );
 }
