@@ -2,8 +2,8 @@ import React, { Fragment, useState } from "react";
 import { Container, Grid, Icon, Segment } from "semantic-ui-react";
 import ModalEdit from "./ModalEdit";
 
-function EnteryLine({ id, description, value, isExpense = false, deleteEntry }) {
-  const [isOpen, setIsOpen] = useState(false);
+function EnteryLine({ id, description, value, isExpense = false, deleteEntry, editEntry }) {
+  
   return (
     <Fragment>
     <Segment color={isExpense ? "red" : "blue"}>
@@ -16,13 +16,13 @@ function EnteryLine({ id, description, value, isExpense = false, deleteEntry }) 
             {value}
           </Grid.Column>
           <Grid.Column width={3}>
-            <Icon name="edit" bordered onClick={() => setIsOpen(true)} />
+            <Icon name="edit" bordered onClick={(id) => editEntry(id)} />
             <Icon name="trash" bordered onClick={() => deleteEntry(id)}/>
           </Grid.Column>
         </Grid.Row>
       </Grid>
     </Segment>
-    <ModalEdit isOpen={isOpen} setIsOpen={setIsOpen}/>
+    
     </Fragment>
   );
 }
