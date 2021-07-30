@@ -1,6 +1,5 @@
 import React, { Fragment } from "react";
-import { Button, Checkbox, Form, Modal, Segment } from "semantic-ui-react";
-import NewEnteryForm from "./NewEnteryForm";
+import { Checkbox, Form, Segment } from "semantic-ui-react";
 
 function EntryForm({description, value, isExpense, setDescription, setValue, setIsExpense}) {
   return (

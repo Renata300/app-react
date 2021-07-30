@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Checkbox, Form, Segment } from "semantic-ui-react";
+import React from "react";
+import { Form } from "semantic-ui-react";
 import ButtonSaveOrCancel from "./ButtonSaveOrCancel";
 import EntryForm from "./EntryForm";
 
@@ -19,7 +19,7 @@ function NewEnteryForm({ addEntry, description, value, isExpense, setDescription
         addEntry={addEntry}
         description={description}
         value={value}
-        isExpense={isExpense}
+        isExpense
       />
     </Form>
   );

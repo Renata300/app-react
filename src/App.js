@@ -1,9 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Container } from "semantic-ui-react";
 import "./App.css";
 import DisplayBalance from "./components/DisplayBalance";
 import DisplayBalances from "./components/DisplayBalances";
-import EnteryLine from "./components/EnteryLine";
 import EntryLines from "./components/EnteryLines";
 import MainHeader from "./components/MainHeader";
 import ModalEdit from "./components/ModalEdit";
@@ -15,6 +14,20 @@ function App() {
   const [value, setValue] = useState("");
   const [isExpense, setIsExpense] = useState(true);
   const [isOpen, setIsOpen] = useState(false);
+  const [entryId, setEntryId] = useState();
+
+  useEffect(() => {
+    if (!isOpen && entryId) {
+      const index = entries.findIndex((entry) => entry.id === entryId);
+      const newEntries = [...entries];
+
+      newEntries[index].description = description;
+      newEntries[index].value = value;
+      newEntries[index].isExpense = isExpense;
+      setEntries(newEntries);
+      //resetEntry();
+    }
+  });
 
   //const deleteEntry = (id) => {}  ---> outra forma de fazer
   function deleteEntry(id) {
@@ -24,6 +37,13 @@ function App() {
 
   function editEntry(id) {
     if (id) {
+      const index = entries.findIndex((entry) => entry.id === id);
+      const entry = entries[index];
+
+      setEntryId(id);
+      setDescription(entry.description);
+      setValue(entry.value);
+      setIsExpense(entry.isExpense);
       setIsOpen(true);
     }
   }
@@ -36,7 +56,14 @@ function App() {
       isExpense,
     });
     setEntries(result);
+    //resetEntry();
   }
+
+  // function resetEntry() {
+  //   setDescription('');
+  //   setValue('');
+  //   setIsExpense(true);
+  // }
 
   return (
     <Container>

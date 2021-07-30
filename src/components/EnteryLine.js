@@ -1,6 +1,5 @@
-import React, { Fragment, useState } from "react";
-import { Container, Grid, Icon, Segment } from "semantic-ui-react";
-import ModalEdit from "./ModalEdit";
+import React, { Fragment } from "react";
+import { Grid, Icon, Segment } from "semantic-ui-react";
 
 function EnteryLine({ id, description, value, isExpense = false, deleteEntry, editEntry }) {
   
@@ -16,7 +15,7 @@ function EnteryLine({ id, description, value, isExpense = false, deleteEntry, ed
             {value}
           </Grid.Column>
           <Grid.Column width={3}>
-            <Icon name="edit" bordered onClick={(id) => editEntry(id)} />
+            <Icon name="edit" bordered onClick={() => editEntry(id)} />
             <Icon name="trash" bordered onClick={() => deleteEntry(id)}/>
           </Grid.Column>
         </Grid.Row>
