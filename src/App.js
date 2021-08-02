@@ -15,6 +15,9 @@ function App() {
   const [isExpense, setIsExpense] = useState(true);
   const [isOpen, setIsOpen] = useState(false);
   const [entryId, setEntryId] = useState();
+  const [incomeTotal, setIncomeTotal] = useState(0);
+  const [expenseTotal, setExpenseTotal] = useState(0);
+  const [total, setTotal] = useState(0);
 
   //ocorre toda vez que 'isOpen' eh alterado
   useEffect(() => {
@@ -37,15 +40,18 @@ function App() {
     let totalExpenses = 0;
 
     entries.map((entry) => {
-      if(entry.isExpense) return totalExpenses += entry.value;
+      if(entry.isExpense) {
+        return (totalExpenses += Number(entry.value));
+      }
 
       //else
-      return totalIncomes += entry.value;
+      return (totalIncomes += Number(entry.value));
     });
 
-    let total = totalIncomes - totalExpenses;
-
-  }, entries);
+    setTotal(totalIncomes - totalExpenses);
+    setExpenseTotal(totalExpenses);
+    setIncomeTotal(totalIncomes);
+  }, [entries]);
 
   //const deleteEntry = (id) => {}  ---> outra forma de fazer
   function deleteEntry(id) {
@@ -86,9 +92,9 @@ function App() {
   return (
     <Container>
       <MainHeader title="My Project" />
-      <DisplayBalance title="Your Balance:" value="2000" size="small" />
+      <DisplayBalance title="Your Balance:" value={total} size="small" />
 
-      <DisplayBalances />
+      <DisplayBalances expenseTotal={expenseTotal} incomeTotal={incomeTotal}/>
       <MainHeader title="History" type="h3" />
 
       <EntryLines
