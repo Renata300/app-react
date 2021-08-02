@@ -32,6 +32,9 @@ function App() {
       setEntries(newEntries);
       resetEntry();
     }
+
+    // esse comando abaixo tira o warning da linha seguinte dele
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen]);
 
   //ocorre toda vez que 'entries' eh alterado
