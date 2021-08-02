@@ -16,6 +16,7 @@ function App() {
   const [isOpen, setIsOpen] = useState(false);
   const [entryId, setEntryId] = useState();
 
+  //ocorre toda vez que 'isOpen' eh alterado
   useEffect(() => {
     if (!isOpen && entryId) {
       const index = entries.findIndex((entry) => entry.id === entryId);
@@ -24,10 +25,27 @@ function App() {
       newEntries[index].description = description;
       newEntries[index].value = value;
       newEntries[index].isExpense = isExpense;
+      // TODO: salvar as alteraçoes apenas quando apertar o botao 'ok'
       setEntries(newEntries);
-      //resetEntry();
+      resetEntry();
     }
-  });
+  }, [isOpen]);
+
+  //ocorre toda vez que 'entries' eh alterado
+  useEffect(() => {
+    let totalIncomes = 0;
+    let totalExpenses = 0;
+
+    entries.map((entry) => {
+      if(entry.isExpense) return totalExpenses += entry.value;
+
+      //else
+      return totalIncomes += entry.value;
+    });
+
+    let total = totalIncomes - totalExpenses;
+
+  }, entries);
 
   //const deleteEntry = (id) => {}  ---> outra forma de fazer
   function deleteEntry(id) {
@@ -48,7 +66,7 @@ function App() {
     }
   }
 
-  function addEntry(description, value, isExpense) {
+  function addEntry() {
     const result = entries.concat({
       id: entries.length + 1,
       description,
@@ -56,14 +74,14 @@ function App() {
       isExpense,
     });
     setEntries(result);
-    //resetEntry();
+    resetEntry();
   }
 
-  // function resetEntry() {
-  //   setDescription('');
-  //   setValue('');
-  //   setIsExpense(true);
-  // }
+  function resetEntry() {
+    setDescription('');
+    setValue('');
+    setIsExpense(true);
+  }
 
   return (
     <Container>
@@ -111,25 +129,25 @@ var inicialEnteries = [
   {
     id: 1,
     description: "Work income",
-    value: "$1000,00",
+    value: 1000.00,
     isExpense: false,
   },
   {
     id: 2,
     description: "Water bill",
-    value: "$20,00",
+    value: 20.00,
     isExpense: true,
   },
   {
     id: 3,
     description: "Rent",
-    value: "$300,00",
+    value: 300.00,
     isExpense: true,
   },
   {
     id: 4,
     description: "Power bill",
-    value: "$50,00",
+    value: 50.00,
     isExpense: true,
   },
 ];
