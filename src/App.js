@@ -7,6 +7,7 @@ import EntryLines from "./components/EnteryLines";
 import MainHeader from "./components/MainHeader";
 import ModalEdit from "./components/ModalEdit";
 import NewEnteryForm from "./components/NewEnteryForm";
+import { useSelector } from 'react-redux';
 
 function App() {
   // Hooks
@@ -19,6 +20,7 @@ function App() {
   const [incomeTotal, setIncomeTotal] = useState(0);
   const [expenseTotal, setExpenseTotal] = useState(0);
   const [total, setTotal] = useState(0);
+  const entriesRedux = useSelector((state) => state.entries);
 
   // ocorre toda vez que 'isOpen' eh alterado
   useEffect(() => {
@@ -102,7 +104,7 @@ function App() {
       <MainHeader title="History" type="h3" />
 
       <EntryLines
-        entries={entries}
+        entries={entriesRedux}
         deleteEntry={deleteEntry}
         editEntry={editEntry}
       />
