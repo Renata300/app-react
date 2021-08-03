@@ -7,9 +7,9 @@ import EntryLines from "./components/EnteryLines";
 import MainHeader from "./components/MainHeader";
 import ModalEdit from "./components/ModalEdit";
 import NewEnteryForm from "./components/NewEnteryForm";
-import {createStore} from 'redux';
 
 function App() {
+  // Hooks
   const [entries, setEntries] = useState(inicialEnteries);
   const [description, setDescription] = useState("");
   const [value, setValue] = useState("");
@@ -20,7 +20,7 @@ function App() {
   const [expenseTotal, setExpenseTotal] = useState(0);
   const [total, setTotal] = useState(0);
 
-  //ocorre toda vez que 'isOpen' eh alterado
+  // ocorre toda vez que 'isOpen' eh alterado
   useEffect(() => {
     if (!isOpen && entryId) {
       const index = entries.findIndex((entry) => entry.id === entryId);
@@ -44,7 +44,7 @@ function App() {
     let totalExpenses = 0;
 
     entries.map((entry) => {
-      if(entry.isExpense) {
+      if (entry.isExpense) {
         return (totalExpenses += Number(entry.value));
       }
 
@@ -56,54 +56,6 @@ function App() {
     setExpenseTotal(totalExpenses);
     setIncomeTotal(totalIncomes);
   }, [entries]);
-
-  const store = createStore((state = inicialEnteries, action) => {
-    console.log(action);
-    let newEntries;
-
-    switch (action.type) {
-      case 'ADD_ENTRY':
-        newEntries = state.concat({...action.payload});
-        return newEntries;
-
-      case 'REMOVE_ENTRY':
-        newEntries = state.filter(entry => entry.id !== action.payload.id)
-        return newEntries;
-
-      default:
-        return state;
-    }
-    
-  });
-
-  // aqui estou apenas fazendo uns cosole.log para verificar o valor que esta saindo
-  store.subscribe(() => {
-    console.log('store: ', store.getState())
-  })
-
-  const payload_add = {
-    id: 5,
-    description: 'Hello from Redux',
-    value: 100,
-    isExpense: false
-  };
-
-  const payload_remove = {
-    id: 1
-  };
-
-  function addEntryRedux(payload) {
-    return {type: 'ADD_ENTRY', payload}
-  }
-
-  function removeEntryRedux(id) {
-    return {type: 'REMOVE_ENTRY', payload: {id}}
-  }
-
-  store.dispatch(addEntryRedux(payload_add));
-  //store.dispatch(addEntryRedux(payload_add));
-  store.dispatch(removeEntryRedux(1));
-  //store.dispatch(removeEntryRedux(2));
 
   //const deleteEntry = (id) => {}  ---> outra forma de fazer
   function deleteEntry(id) {
@@ -136,8 +88,8 @@ function App() {
   }
 
   function resetEntry() {
-    setDescription('');
-    setValue('');
+    setDescription("");
+    setValue("");
     setIsExpense(true);
   }
 
@@ -146,7 +98,7 @@ function App() {
       <MainHeader title="My Project" />
       <DisplayBalance title="Your Balance:" value={total} size="small" />
 
-      <DisplayBalances expenseTotal={expenseTotal} incomeTotal={incomeTotal}/>
+      <DisplayBalances expenseTotal={expenseTotal} incomeTotal={incomeTotal} />
       <MainHeader title="History" type="h3" />
 
       <EntryLines
@@ -187,25 +139,25 @@ var inicialEnteries = [
   {
     id: 1,
     description: "Work income",
-    value: 1000.00,
+    value: 1000.0,
     isExpense: false,
   },
   {
     id: 2,
     description: "Water bill",
-    value: 20.00,
+    value: 20.0,
     isExpense: true,
   },
   {
     id: 3,
     description: "Rent",
-    value: 300.00,
+    value: 300.0,
     isExpense: true,
   },
   {
     id: 4,
     description: "Power bill",
-    value: 50.00,
+    value: 50.0,
     isExpense: true,
   },
 ];
