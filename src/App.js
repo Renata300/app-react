@@ -9,6 +9,7 @@ import ModalEdit from "./components/ModalEdit";
 import NewEnteryForm from "./components/NewEnteryForm";
 
 function App() {
+  // Hooks
   const [entries, setEntries] = useState(inicialEnteries);
   const [description, setDescription] = useState("");
   const [value, setValue] = useState("");
@@ -19,7 +20,7 @@ function App() {
   const [expenseTotal, setExpenseTotal] = useState(0);
   const [total, setTotal] = useState(0);
 
-  //ocorre toda vez que 'isOpen' eh alterado
+  // ocorre toda vez que 'isOpen' eh alterado
   useEffect(() => {
     if (!isOpen && entryId) {
       const index = entries.findIndex((entry) => entry.id === entryId);
@@ -32,6 +33,9 @@ function App() {
       setEntries(newEntries);
       resetEntry();
     }
+
+    // esse comando abaixo tira o warning da linha seguinte dele
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen]);
 
   //ocorre toda vez que 'entries' eh alterado
@@ -40,7 +44,7 @@ function App() {
     let totalExpenses = 0;
 
     entries.map((entry) => {
-      if(entry.isExpense) {
+      if (entry.isExpense) {
         return (totalExpenses += Number(entry.value));
       }
 
@@ -84,8 +88,8 @@ function App() {
   }
 
   function resetEntry() {
-    setDescription('');
-    setValue('');
+    setDescription("");
+    setValue("");
     setIsExpense(true);
   }
 
@@ -94,7 +98,7 @@ function App() {
       <MainHeader title="My Project" />
       <DisplayBalance title="Your Balance:" value={total} size="small" />
 
-      <DisplayBalances expenseTotal={expenseTotal} incomeTotal={incomeTotal}/>
+      <DisplayBalances expenseTotal={expenseTotal} incomeTotal={incomeTotal} />
       <MainHeader title="History" type="h3" />
 
       <EntryLines
@@ -135,25 +139,25 @@ var inicialEnteries = [
   {
     id: 1,
     description: "Work income",
-    value: 1000.00,
+    value: 1000.0,
     isExpense: false,
   },
   {
     id: 2,
     description: "Water bill",
-    value: 20.00,
+    value: 20.0,
     isExpense: true,
   },
   {
     id: 3,
     description: "Rent",
-    value: 300.00,
+    value: 300.0,
     isExpense: true,
   },
   {
     id: 4,
     description: "Power bill",
-    value: 50.00,
+    value: 50.0,
     isExpense: true,
   },
 ];
