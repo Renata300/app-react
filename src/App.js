@@ -7,6 +7,7 @@ import EntryLines from "./components/EnteryLines";
 import MainHeader from "./components/MainHeader";
 import ModalEdit from "./components/ModalEdit";
 import NewEnteryForm from "./components/NewEnteryForm";
+import {createStore} from 'redux';
 
 function App() {
   const [entries, setEntries] = useState(inicialEnteries);
@@ -55,6 +56,54 @@ function App() {
     setExpenseTotal(totalExpenses);
     setIncomeTotal(totalIncomes);
   }, [entries]);
+
+  const store = createStore((state = inicialEnteries, action) => {
+    console.log(action);
+    let newEntries;
+
+    switch (action.type) {
+      case 'ADD_ENTRY':
+        newEntries = state.concat({...action.payload});
+        return newEntries;
+
+      case 'REMOVE_ENTRY':
+        newEntries = state.filter(entry => entry.id !== action.payload.id)
+        return newEntries;
+
+      default:
+        return state;
+    }
+    
+  });
+
+  // aqui estou apenas fazendo uns cosole.log para verificar o valor que esta saindo
+  store.subscribe(() => {
+    console.log('store: ', store.getState())
+  })
+
+  const payload_add = {
+    id: 5,
+    description: 'Hello from Redux',
+    value: 100,
+    isExpense: false
+  };
+
+  const payload_remove = {
+    id: 1
+  };
+
+  function addEntryRedux(payload) {
+    return {type: 'ADD_ENTRY', payload}
+  }
+
+  function removeEntryRedux(id) {
+    return {type: 'REMOVE_ENTRY', payload: {id}}
+  }
+
+  store.dispatch(addEntryRedux(payload_add));
+  //store.dispatch(addEntryRedux(payload_add));
+  store.dispatch(removeEntryRedux(1));
+  //store.dispatch(removeEntryRedux(2));
 
   //const deleteEntry = (id) => {}  ---> outra forma de fazer
   function deleteEntry(id) {
