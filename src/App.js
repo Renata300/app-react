@@ -11,7 +11,7 @@ import { useSelector } from 'react-redux';
 
 function App() {
   // Hooks
-  const [entries, setEntries] = useState(inicialEnteries);
+  
   const [description, setDescription] = useState("");
   const [value, setValue] = useState("");
   const [isExpense, setIsExpense] = useState(true);
@@ -20,7 +20,7 @@ function App() {
   const [incomeTotal, setIncomeTotal] = useState(0);
   const [expenseTotal, setExpenseTotal] = useState(0);
   const [total, setTotal] = useState(0);
-  const entriesRedux = useSelector((state) => state.entries);
+  const entries = useSelector((state) => state.entries);
 
   // ocorre toda vez que 'isOpen' eh alterado
   useEffect(() => {
@@ -32,7 +32,7 @@ function App() {
       newEntries[index].value = value;
       newEntries[index].isExpense = isExpense;
       // TODO: salvar as alteraçoes apenas quando apertar o botao 'ok'
-      setEntries(newEntries);
+      //setEntries(newEntries);
       resetEntry();
     }
 
@@ -57,13 +57,7 @@ function App() {
     setTotal(totalIncomes - totalExpenses);
     setExpenseTotal(totalExpenses);
     setIncomeTotal(totalIncomes);
-  }, [entries]);
-
-  //const deleteEntry = (id) => {}  ---> outra forma de fazer
-  function deleteEntry(id) {
-    const result = entries.filter((entry) => entry.id !== id);
-    setEntries(result);
-  }
+  }, [entries]); // ocorre apenas se houver alteracao no 'entries'
 
   function editEntry(id) {
     if (id) {
@@ -85,7 +79,7 @@ function App() {
       value,
       isExpense,
     });
-    setEntries(result);
+    //setEntries(result);
     resetEntry();
   }
 
@@ -104,8 +98,7 @@ function App() {
       <MainHeader title="History" type="h3" />
 
       <EntryLines
-        entries={entriesRedux}
-        deleteEntry={deleteEntry}
+        entries={entries}
         editEntry={editEntry}
       />
 
@@ -136,30 +129,4 @@ function App() {
 
 export default App;
 
-var inicialEnteries = [
-  // ctrl + d --> vai selecionando todos os elementos iguais a ele
-  {
-    id: 1,
-    description: "Work income",
-    value: 1000.0,
-    isExpense: false,
-  },
-  {
-    id: 2,
-    description: "Water bill",
-    value: 20.0,
-    isExpense: true,
-  },
-  {
-    id: 3,
-    description: "Rent",
-    value: 300.0,
-    isExpense: true,
-  },
-  {
-    id: 4,
-    description: "Power bill",
-    value: 50.0,
-    isExpense: true,
-  },
-];
+

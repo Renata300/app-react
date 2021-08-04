@@ -10,6 +10,12 @@ const reducer = (state = inicialEnteries, action) => {
       newEntries = state.filter((entry) => entry.id !== action.payload.id);
       return newEntries;
 
+    case 'UPDATE_ENTRY':
+      newEntries = [...state];
+      const index = newEntries.findIndex(entry => entry.id === action.payload.id);
+      newEntries[index] = {...action.payload.entry};
+      return newEntries
+
     default:
       return state;
   }
@@ -21,13 +27,13 @@ var inicialEnteries = [
   // ctrl + d --> vai selecionando todos os elementos iguais a ele
   {
     id: 1,
-    description: "Work income redux",
+    description: "Work income",
     value: 1000.0,
     isExpense: false,
   },
   {
     id: 2,
-    description: "Water bill redux",
+    description: "Water bill",
     value: 20.0,
     isExpense: true,
   },

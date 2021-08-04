@@ -5,3 +5,8 @@ export const addEntryRedux = (payload) => {
 export const removeEntryRedux = (id) => {
   return { type: "REMOVE_ENTRY", payload: { id } };
 };
+
+// fazer o update dos valores na hora quando eles forem alterados
+export const updateEntryRedux = (id, entry) => {
+  return { type: 'UPDATE_ENTRY', payload: {id, entry}}
+}
