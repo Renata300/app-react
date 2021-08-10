@@ -7,5 +7,5 @@ export function* getAllEntries() {
     yield take(entriesTypes.GET_ENTRIES)
     const result = yield call(axios, 'http://localhost:3001/entries');
     console.log(result);
-    yield put({types: types.POPULATE_ENTRIES, payload: result.data});
+    yield put({type: types.POPULATE_ENTRIES, payload: result.data});
 } 

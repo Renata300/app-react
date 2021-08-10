@@ -46,14 +46,6 @@ function App() {
     setIncomeTotal(totalIncomes);
   }, [entries]); // ocorre apenas se houver alteracao no 'entries'
 
-  // async function fetcInitialData() {
-  //   const result = await axios.get('http://localhost:3001/entries');
-  // }
-
-  // useEffect(() => {
-  //   fetcInitialData();
-  // }, [])
-  
   const dispatch = useDispatch();
 
   useEffect(() => {
