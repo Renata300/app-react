@@ -7,6 +7,7 @@ import { openEditModal } from "../actions/modals.actions";
 function EnteryLine({ id, description, value, isExpense = false }) {
 
   const dispatch = useDispatch();
+  
 
   return (
     <Fragment>

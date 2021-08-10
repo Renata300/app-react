@@ -7,7 +7,9 @@ import EntryLines from "./components/EnteryLines";
 import MainHeader from "./components/MainHeader";
 import ModalEdit from "./components/ModalEdit";
 import NewEnteryForm from "./components/NewEnteryForm";
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { getAllEntries } from "./actions/entries.actions";
+import axios from "axios";
 
 function App() {
   // Hooks
@@ -23,9 +25,7 @@ function App() {
     const index = entries.findIndex(entry => entry.id === id);
     setEntry(entries[index]);
 
-    // esse comando abaixo tira o warning da linha seguinte dele
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isOpen, id]);
+  }, [isOpen, id, entries]);
 
   //ocorre toda vez que 'entries' eh alterado
   useEffect(() => {
@@ -45,6 +45,20 @@ function App() {
     setExpenseTotal(totalExpenses);
     setIncomeTotal(totalIncomes);
   }, [entries]); // ocorre apenas se houver alteracao no 'entries'
+
+  // async function fetcInitialData() {
+  //   const result = await axios.get('http://localhost:3001/entries');
+  // }
+
+  // useEffect(() => {
+  //   fetcInitialData();
+  // }, [])
+  
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getAllEntries());
+  }, [])
 
   return (
     <Container>
