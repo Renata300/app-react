@@ -1,4 +1,4 @@
-import { call, delay, put, take } from "redux-saga/effects";
+import { call, delay, fork, put, take } from "redux-saga/effects";
 
 function double(number) {
   return number*2;
@@ -17,9 +17,24 @@ export function* testSaga() {
   }
 }
 
+function* doNothing() {
+  console.log('I have been called');
+  yield delay(1000);
+  console.log('I am doing nothing');
+}
+
+export function* testFork() {
+  while(true) {
+    yield take('TEST_MESSAGE_2');
+    yield fork(doNothing) // 'fork' ocorre em paralelo
+    yield call(doNothing) // 'call' espera pelo resultado
+   
+  }
+}
+
 export function* dispatchTest() {
   while(true) {
-    yield delay(1000);
-    yield put({ type: 'TEST_MESSAGE', payload: 1000 })
+    yield delay(5000);
+    yield put({ type: 'TEST_MESSAGE_2', payload: 1000 })
   }
 }
