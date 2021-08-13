@@ -15,14 +15,6 @@
     {
       "id": 4,
       "description": "Power bill"
-    },
-    {
-      "id": 5,
-      "description": "Another Bill"
-    },
-    {
-      "id": 6,
-      "description": "Bill"
     }
   ],
   "values": [
@@ -45,16 +37,6 @@
       "id": 4,
       "value": 50,
       "isExpense": true
-    },
-    {
-      "id": 5,
-      "value": 150,
-      "isExpense": true
-    },
-    {
-      "id": 6,
-      "value": 100,
-      "isExpense": false
     }
   ]
 }
