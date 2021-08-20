@@ -59,7 +59,6 @@ export function* infinitySaga() {
     finally {
       console.log('The fork was cancelled? ', yield cancelled());
     }
-
   }
 }
 

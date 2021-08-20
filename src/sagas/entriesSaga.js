@@ -21,5 +21,4 @@ export function* getAllEntriesDetails() {
     const entry = payload[index];
     yield fork(getEntryDetails, entry.id)
   }
-
 }
