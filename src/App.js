@@ -1,6 +1,6 @@
+import "./App.css";
 import { useEffect, useState } from "react";
 import { Container } from "semantic-ui-react";
-import "./App.css";
 import DisplayBalance from "./components/DisplayBalance";
 import DisplayBalances from "./components/DisplayBalances";
 import EntryLines from "./components/EnteryLines";
@@ -9,7 +9,6 @@ import ModalEdit from "./components/ModalEdit";
 import NewEnteryForm from "./components/NewEnteryForm";
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllEntries } from "./actions/entries.actions";
-import axios from "axios";
 
 function App() {
   // Hooks
@@ -19,12 +18,12 @@ function App() {
   const [entry, setEntry] = useState();
   const {isOpen, id} = useSelector((state) => state.modals);
   const entries = useSelector((state) => state.entries);
+  const dispatch = useDispatch();
 
-  // ocorre toda vez que 'isOpen' eh alterado
+  // ocorre toda vez que 'isOpen','id' ou 'entries' eh alterado
   useEffect(() => {
     const index = entries.findIndex(entry => entry.id === id);
     setEntry(entries[index]);
-
   }, [isOpen, id, entries]);
 
   //ocorre toda vez que 'entries' eh alterado
@@ -36,7 +35,6 @@ function App() {
       if (entry.isExpense) {
         return (totalExpenses += Number(entry.value));
       }
-
       //else
       return (totalIncomes += Number(entry.value));
     });
@@ -44,13 +42,11 @@ function App() {
     setTotal(totalIncomes - totalExpenses);
     setExpenseTotal(totalExpenses);
     setIncomeTotal(totalIncomes);
-  }, [entries]); // ocorre apenas se houver alteracao no 'entries'
-
-  const dispatch = useDispatch();
+  }, [entries]); 
 
   useEffect(() => {
     dispatch(getAllEntries());
-  }, [])
+  }, [dispatch])
 
   return (
     <Container>
@@ -71,4 +67,12 @@ function App() {
 
 export default App;
 
-
+// TODOs: 
+/*
+  - ver para adicionar um novo elemento seguindo a ordem dos id ja existentes
+  - melhorar o design da pagina em geral 
+  - nao aceitar que um novo 'edit entry' seja adicionado sem que todos os campos (description e value, no momento) sejam preenchidos
+  - so aceitar numeros (pode ser com virgula), valores validos e positivos (pois ja é feito o calculo de adiçao ou decremento, ou seja, se for colocado o sinal de menos, o calculo vai sair errado)
+  - atualizar o db.json quando editar alguma coisa da tela (essa atualizaçao ja esta sendo feita na hora de se adicionar e remover)
+  - 
+*/

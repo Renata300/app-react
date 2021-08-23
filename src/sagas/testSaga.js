@@ -1,4 +1,6 @@
-import { call, delay, put, take } from "redux-saga/effects";
+// esse arquivo esta sendo usado basicamente para teste, ou seja, nao ha tanta relaçao com o codigo em geral
+
+import { call, cancel, cancelled, delay, fork, put, take, takeEvery, takeLatest } from "redux-saga/effects";
 
 function double(number) {
   return number*2;
@@ -17,9 +19,68 @@ export function* testSaga() {
   }
 }
 
-export function* dispatchTest() {
+function* doNothing() {
+  console.log('I have been called');
+  yield delay(1000);
+  console.log('I am doing nothing');
+}
+
+export function* testFork() {
   while(true) {
-    yield delay(1000);
-    yield put({ type: 'TEST_MESSAGE', payload: 1000 })
+    yield take('TEST_MESSAGE_2');
+    yield fork(doNothing) // 'fork' ocorre em paralelo
+    yield fork(doNothing) // 'fork' ocorre em paralelo
+    yield fork(doNothing) // 'fork' ocorre em paralelo
+  }
+}
+
+export function* testSagaTakeEveryProccess({payload}) {
+  console.log(`Start process for index ${payload}`);
+  yield delay(3000);
+  console.log(`Finish process for index ${payload}`);
+}
+
+export function* testSagaTakeEvery() {
+  const {payload} = yield takeEvery('TEST_MESSAGE_3', testSagaTakeEveryProccess);
+  console.log(`Finish TakeEvery for index ${payload}`);
+}
+
+export function* infinitySaga() {
+  console.log('Start infinity saga');
+  let index = 0;
+
+  while(true) {
+    index++;
+    try {
+      console.log(`Inside infinity loop ${index}`);
+      yield delay(1000);
+    } 
+    catch (error){
+      console.error('An error has occured: ', error);
+    } 
+    finally {
+      console.log('The fork was cancelled? ', yield cancelled());
+    }
+  }
+}
+
+export function* testSagaCancelled() {
+  yield take('TEST_MESSAGE_4');
+  const handleCancel = yield fork(infinitySaga);
+  yield delay(3000);
+  yield cancel(handleCancel);
+}
+
+export function* testSagaTakeLatest() {
+  yield takeLatest('TEST_MESSAGE_5', infinitySaga);
+}
+
+export function* dispatchTest() {
+  let index = 0;
+
+  while(true) {
+    yield delay(5000);
+    yield put({ type: 'TEST_MESSAGE_5', payload: index });
+    index++;
   }
 }
