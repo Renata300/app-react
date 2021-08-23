@@ -19,7 +19,6 @@ export const removeEntryRedux = (id) => {
   return { type: types.REMOVE_ENTRY, payload: { id } };
 };
 
-// fazer o update dos valores na hora quando eles forem alterados
 export const updateEntryRedux = (id, entry) => {
   return { type: types.UPDATE_ENTRY, payload: {id, entry}}
 }

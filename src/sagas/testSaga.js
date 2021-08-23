@@ -1,3 +1,5 @@
+// esse arquivo esta sendo usado basicamente para teste, ou seja, nao ha tanta relaçao com o codigo em geral
+
 import { call, cancel, cancelled, delay, fork, put, take, takeEvery, takeLatest } from "redux-saga/effects";
 
 function double(number) {
@@ -75,7 +77,6 @@ export function* testSagaTakeLatest() {
 
 export function* dispatchTest() {
   let index = 0;
-  //yield put({ type: 'TEST_MESSAGE_5', payload: index });
 
   while(true) {
     yield delay(5000);

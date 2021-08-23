@@ -7,7 +7,6 @@ export function* addEntrySaga() {
 }
 
 function* addEntrie({payload}) {
-    console.log('payload: '+payload);
     yield call(addEntry, payload);
     yield call(addEntryDetails, payload);
     yield put({type: entriesTypes.ADD_ENTRY_RESULT, payload})
@@ -29,5 +28,3 @@ function* addEntryDetails({id, isExpense, value}) {
         isExpense
     });
 }
-
-// TODO: ver para adicionar um novo elemento seguindo a ordem dos id ja existentes
