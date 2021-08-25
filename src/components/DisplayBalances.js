@@ -8,7 +8,7 @@ function DisplayBalances({expenseTotal, incomeTotal}) {
       <Grid columns={2} divided>
         <Grid.Row>
           <Grid.Column>
-            <DisplayBalance title="Income" value={incomeTotal} color="green" />
+            <DisplayBalance title="Income" value={incomeTotal} color="blue" />
           </Grid.Column>
           <Grid.Column>
             <DisplayBalance title="Expenses" value={expenseTotal} color="red" />

@@ -10,15 +10,21 @@ function EnteryLine({ id, description, value, isExpense = false }) {
   return (
     <Fragment>
       <Segment color={isExpense ? "red" : "blue"}>
-        <Grid columns={3} textAlign="right">
+        <Grid columns={5} textAlign="right">
           <Grid.Row>
-            <Grid.Column width={10} textAlign="left">
+          <Grid.Column width={3} textAlign="left" >
+            Name {/* TODO */}
+          </Grid.Column>
+            <Grid.Column width={3} textAlign="left" >
               {description}
             </Grid.Column>
             <Grid.Column width={3} textAlign="right">
               {value}
             </Grid.Column>
-            <Grid.Column width={3}>
+            <Grid.Column width={3} textAlign="right">
+              Date {/* TODO */}
+            </Grid.Column>
+            <Grid.Column width={4}>
               <Icon
                 name="edit"
                 bordered
