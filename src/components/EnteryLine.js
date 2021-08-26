@@ -4,16 +4,16 @@ import { useDispatch } from "react-redux";
 import { removeEntryRedux } from "../actions/entries.actions";
 import { openEditModal } from "../actions/modals.actions";
 
-function EnteryLine({ id, description, value, isExpense = false }) {
+function EnteryLine({ id, description, value, date, isExpense = false }) {
   const dispatch = useDispatch();
 
   return (
     <Fragment>
-      <Segment color={isExpense ? "red" : "blue"}>
+      <Segment color={isExpense ? "red" : "green"}>
         <Grid columns={5} textAlign="right">
           <Grid.Row>
           <Grid.Column width={3} textAlign="left" >
-            Name {/* TODO */}
+            {id} {/* TODO */}
           </Grid.Column>
             <Grid.Column width={3} textAlign="left" >
               {description}
@@ -23,6 +23,7 @@ function EnteryLine({ id, description, value, isExpense = false }) {
             </Grid.Column>
             <Grid.Column width={3} textAlign="right">
               Date {/* TODO */}
+              {/* {date} */}
             </Grid.Column>
             <Grid.Column width={4}>
               <Icon

@@ -11,6 +11,7 @@ import ModalEdit from "./components/ModalEdit";
 import NewEnteryForm from "./components/NewEnteryForm";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllEntries } from "./actions/entries.actions";
+// import {Color} from '@material-ui/lab/Alert';
 
 function App() {
   // Hooks
@@ -51,9 +52,6 @@ function App() {
   }, [dispatch]);
 
   return (
-    // <>
-    // <Table definition>
-    // <TableBody>
     <Grid
       container
       style={{ paddingTop: "30px", paddingBottom: "30px", margin: "3px" }}
@@ -62,17 +60,19 @@ function App() {
       item
       xs={12}
     >
-      <Segment width={3} style={{ padding: "15px" }}>
-        <Segment style={{ margin: "3px", paddingRight: "50px", paddingLeft: "50px"}} >
-          {/* <Container > */}
+      <Segment tertiary width={3} style={{ padding: "5px" }}  >
+        <Segment style={{ margin: "3px", paddingRight: "50px", paddingLeft: "50px" }} >
           <Container >
+          {/* <Icon name="users" iconPosition="right"/> */}
+          <Icon name="users" iconPosition="left" />
             <MainHeader title="My Expenses" />
+            
             {/* colocal um simbolo no canto direito */}
             <DisplayBalance
               title="Your Balance:"
               value={total}
               size="small"
-              color={total > 0 ? "green" : "orange"}
+              color={total > 0 ? "blue" : "orange"}
             />
           </Container>
 
@@ -81,26 +81,22 @@ function App() {
             incomeTotal={incomeTotal}
           />
 
-          {/* <Grid style={{ marginTop: 20, marginBottom: 10 }}> */}
+          {/* <Grid style={{ marginTop: '20px', marginBottom: '10px'  }}> */}
           {/* Se quiser colocar esse 'MainHeader' no canto, eh so descomentar o 'Grid' */}
-          <MainHeader title="History" type="h3" />
+            <MainHeader title="History" type="h3" />
           {/* </Grid> */}
           <EntryLines entries={entries} />
 
-          {/* <Grid style={{ marginTop: 20, marginBottom: 10 }}> */}
+          {/* <Grid style={{ marginTop: 20, marginBottom: 10}}> */}
           {/* Se quiser colocar esse 'MainHeader' no canto, eh so descomentar o 'Grid' */}
-          <MainHeader title="Add new transaction" type="h3" />
+            <MainHeader title="Add new transaction" type="h3" />
           {/* </Grid> */}
 
           <NewEnteryForm />
           <ModalEdit isOpen={isOpen} {...entry} />
-          {/* </Container> */}
         </Segment>
       </Segment>
     </Grid>
-    // </TableBody>
-    // </Table>
-    // </>
   );
 }
 
