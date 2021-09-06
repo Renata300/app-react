@@ -17,7 +17,7 @@ function EntryForm({
         <Form.Input
           minLength={1}
           maxLength={50}
-          style={{ margin: 5 }}
+          style={{ margin: 1, marginBottom: 5 }}
           icon="tags"
           width={12}
           label="Description"
@@ -28,7 +28,7 @@ function EntryForm({
         <Form.Input
           minLength={1}
           maxLength={9}
-          style={{ margin: 5 }}
+          style={{ margin: 1, marginBottom: 5}}
           width={4}
           label="Value"
           placeholder="100,00"
@@ -40,19 +40,49 @@ function EntryForm({
         <Form.Input
           minLength={10}
           maxLength={10}
-          style={{ margin: 5 }}
+          style={{ margin: 1 }}
+          width={5}
           label="Date"
           placeholder="25/08/2021"
           icon="calendar alternate outline"
           iconPosition="right"
           /*value="Date"*/
-        />{" "}
-        {/* TODO*/}
+        />
+        <Form.Input
+        //TODO
+          minLength={10}
+          maxLength={10}
+          style={{ margin: 1 }}
+          width={5}
+          label="Other thing"
+          placeholder="25/08/2021"
+          icon="calendar alternate outline"
+          iconPosition="right"
+          /*value="Date"*/
+        />
+        
+        <Form.Input
+        //TODO
+          minLength={10}
+          maxLength={10}
+          style={{ margin: 1 }}
+          width={5}
+          label="Other thing"
+          placeholder="25/08/2021"
+          icon="calendar alternate outline"
+          iconPosition="right"
+          /*value="Date"*/
+        />
       </Form.Group>
-      <Segment textAlign="left" style={{ marginLeft: 5, marginRight: -5 }}>
+      <Segment
+        compact
+        textAlign="left"
+        style={{ marginLeft: 1 }}
+      >
         <Checkbox
           toggle
           label="Is expense"
+          style={{ margin: 1 }}
           checked={isExpense}
           onChange={() => setIsExpense((oldState) => !oldState)}
         />

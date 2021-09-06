@@ -20,6 +20,7 @@ function* addEntry({id, description, value/*, date*/}) {
         value,
         /*date*/
     });
+    new Promise((s) => setTimeout(s,3000));
 }
 
 function* addEntryDetails({id, isExpense, value/*, date*/}) {
@@ -30,4 +31,5 @@ function* addEntryDetails({id, isExpense, value/*, date*/}) {
         /*date,*/
         isExpense
     });
+    new Promise((s) => setTimeout(s,3000));
 }

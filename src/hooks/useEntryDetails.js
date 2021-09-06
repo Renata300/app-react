@@ -39,6 +39,7 @@ function useEntryDetails(desc = "", val = "", /*dat="",*/ isExp = true, /*idd=""
     dispatch(
       addEntryRedux({
         id: uuidv4(), // esse 'uuidv4' eh o que gera os id aleatoriamente
+        // TODO: ver para adicionar um novo elemento seguindo a ordem dos id ja existentes
         description,
         value,
        /*date,*/

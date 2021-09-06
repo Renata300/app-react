@@ -2,7 +2,7 @@
 
 import "./App.css";
 import { useEffect, useState } from "react";
-import { Container, Grid, Icon, Segment } from "semantic-ui-react";
+import { Container, Grid, Segment } from "semantic-ui-react";
 import DisplayBalance from "./components/DisplayBalance";
 import DisplayBalances from "./components/DisplayBalances";
 import EntryLines from "./components/EnteryLines";
@@ -62,10 +62,8 @@ function App() {
     >
       <Segment tertiary width={3} style={{ padding: "5px" }}  >
         <Segment style={{ margin: "3px", paddingRight: "50px", paddingLeft: "50px" }} >
-          <Container >
-          {/* <Icon name="users" iconPosition="right"/> */}
-          <Icon name="users" iconPosition="left" />
-            <MainHeader title="My Expenses" />
+          <Container style={{ marginTop: 10}} >
+            <MainHeader title="My Expenses" style={{ margin: "3px"}}/>
             
             {/* colocal um simbolo no canto direito */}
             <DisplayBalance
@@ -104,9 +102,9 @@ export default App;
 
 // TODOs:
 /*
-  - ver para adicionar um novo elemento seguindo a ordem dos id ja existentes
   - melhorar o design da pagina em geral 
   - nao aceitar que um novo 'edit entry' seja adicionado sem que todos os campos (description e value, no momento) sejam preenchidos
   - so aceitar numeros (pode ser com virgula), valores validos e positivos (pois ja é feito o calculo de adiçao ou decremento, ou seja, se for colocado o sinal de menos, o calculo vai sair errado)
   - colocar spinner, warnings...
+  - poder ordenar a lista por data, valor...
 */
