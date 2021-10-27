@@ -12,6 +12,7 @@ function useEntryDetails(desc = "", val = "", /*dat="",*/ isExp = true, /*idd=""
   const [isExpense, setIsExpense] = useState(isExp);
   // const [id, setId] = useState(idd);
   const dispatch = useDispatch();
+  //var x = 20;
 
   useEffect(() => {
     setDescription(desc);

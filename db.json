@@ -17,12 +17,12 @@
       "description": "Power bill"
     },
     {
-      "id": "c70b1ef2-5524-4f3c-9e95-8ad4fb4c6d7e",
+      "id": "e6d8aa09-fb36-40f3-b003-535dff076623",
       "description": "New"
     },
     {
-      "id": "351437e0-e656-45f7-9852-93c308660da6",
-      "description": "Another bill"
+      "id": 21,
+      "description": "Test"
     }
   ],
   "values": [
@@ -47,14 +47,14 @@
       "isExpense": true
     },
     {
-      "id": "c70b1ef2-5524-4f3c-9e95-8ad4fb4c6d7e",
-      "value": "50",
-      "isExpense": true
+      "id": "e6d8aa09-fb36-40f3-b003-535dff076623",
+      "value": "100",
+      "isExpense": false
     },
     {
-      "id": "351437e0-e656-45f7-9852-93c308660da6",
-      "value": "10",
-      "isExpense": false
+      "id": 21,
+      "value": "120",
+      "isExpense": true
     }
   ]
 }

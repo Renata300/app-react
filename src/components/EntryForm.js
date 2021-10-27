@@ -42,32 +42,29 @@ function EntryForm({
           maxLength={10}
           style={{ margin: 1 }}
           width={5}
+          label="Place"
+          placeholder="Bourbon country"
+          icon="building outline"
+          iconPosition="right"
+          /*value={place}*/
+        />
+        <Form.Input
+          minLength={10}
+          maxLength={10}
+          style={{ margin: 1 }}
+          width={5}
+          label="Who"
+          placeholder="Maria"
+          icon="user"
+          iconPosition="right"
+          /*value="person"*/
+        />
+        <Form.Input
+          minLength={10}
+          maxLength={10}
+          style={{ margin: 1 }}
+          width={5}
           label="Date"
-          placeholder="25/08/2021"
-          icon="calendar alternate outline"
-          iconPosition="right"
-          /*value="Date"*/
-        />
-        <Form.Input
-        //TODO
-          minLength={10}
-          maxLength={10}
-          style={{ margin: 1 }}
-          width={5}
-          label="Other thing"
-          placeholder="25/08/2021"
-          icon="calendar alternate outline"
-          iconPosition="right"
-          /*value="Date"*/
-        />
-        
-        <Form.Input
-        //TODO
-          minLength={10}
-          maxLength={10}
-          style={{ margin: 1 }}
-          width={5}
-          label="Other thing"
           placeholder="25/08/2021"
           icon="calendar alternate outline"
           iconPosition="right"
