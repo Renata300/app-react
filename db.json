@@ -23,6 +23,16 @@
     {
       "id": 21,
       "description": "Test"
+    },
+    {
+      "id": 0.3180639666310363,
+      "description": "New one",
+      "value": "10"
+    },
+    {
+      "id": 8,
+      "description": "New",
+      "value": "10"
     }
   ],
   "values": [
@@ -54,6 +64,16 @@
     {
       "id": 21,
       "value": "120",
+      "isExpense": true
+    },
+    {
+      "id": 0.3180639666310363,
+      "value": "10",
+      "isExpense": true
+    },
+    {
+      "id": 8,
+      "value": "10",
       "isExpense": true
     }
   ]

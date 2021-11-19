@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { addEntryRedux, updateEntryRedux } from "../actions/entries.actions";
-import { v4 as uuidv4 } from "uuid"; 
+//import { v4 as uuidv4 } from "uuid"; 
 import { closeEditModal } from "../actions/modals.actions";
 
 function useEntryDetails(desc = "", val = "", /*dat="",*/ isExp = true, /*idd=""*/) {
@@ -12,7 +12,6 @@ function useEntryDetails(desc = "", val = "", /*dat="",*/ isExp = true, /*idd=""
   const [isExpense, setIsExpense] = useState(isExp);
   // const [id, setId] = useState(idd);
   const dispatch = useDispatch();
-  //var x = 20;
 
   useEffect(() => {
     setDescription(desc);
@@ -36,10 +35,17 @@ function useEntryDetails(desc = "", val = "", /*dat="",*/ isExp = true, /*idd=""
     resetValues();
   }
 
+  function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min)) + min;
+  }
+
   function addEntry() {
     dispatch(
       addEntryRedux({
-        id: uuidv4(), // esse 'uuidv4' eh o que gera os id aleatoriamente
+        id: getRandomInt(1, 10), // 'uuidv4' eh o que gera os id aleatoriamente
+                                 // no momento estou utilizando um gerador de numeros aleatorios
         // TODO: ver para adicionar um novo elemento seguindo a ordem dos id ja existentes
         description,
         value,
@@ -47,6 +53,7 @@ function useEntryDetails(desc = "", val = "", /*dat="",*/ isExp = true, /*idd=""
         isExpense,
       })
     );
+    // if (getAllEntries ) // caso o id ja exista, gerar novamente
     resetValues();
   }
 
