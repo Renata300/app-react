@@ -19,6 +19,7 @@ export function* getAllEntriesDetails() {
 
   for (let index = 0; index < payload.length; index++) {
     const entry = payload[index];
+    // entry.id = entry.length();
     yield fork(getEntryDetails, entry.id)
   }
 }

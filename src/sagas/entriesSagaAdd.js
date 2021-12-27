@@ -12,19 +12,24 @@ function* addEntrie({payload}) {
     yield put({type: entriesTypes.ADD_ENTRY_RESULT, payload})
 }
 
-function* addEntry({id, description}) {
-    yield console.log(id, description);
+function* addEntry({id, description, value/*, date*/}) {
+    yield console.log(id, description/*, date*/);
     axios.post('http://localhost:3001/entries', {
         id,
-        description
+        description, 
+        value,
+        /*date*/
     });
+    new Promise((s) => setTimeout(s,3000));
 }
 
-function* addEntryDetails({id, isExpense, value}) {
-    yield console.log(id, isExpense, value);
+function* addEntryDetails({id, isExpense, value/*, date*/}) {
+    yield console.log(id, isExpense, value/*, date*/);
     axios.post('http://localhost:3001/values', {
         id,
         value,
+        /*date,*/
         isExpense
     });
+    new Promise((s) => setTimeout(s,3000));
 }

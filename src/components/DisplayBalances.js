@@ -5,7 +5,7 @@ import DisplayBalance from "./DisplayBalance";
 function DisplayBalances({expenseTotal, incomeTotal}) {
   return (
     <Segment textAlign="center">
-      <Grid columns={2} divided>
+      <Grid columns={2} divided >
         <Grid.Row>
           <Grid.Column>
             <DisplayBalance title="Income" value={incomeTotal} color="green" />

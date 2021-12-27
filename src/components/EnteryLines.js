@@ -6,7 +6,7 @@ import EnteryLine from "./EnteryLine";
 
 function EntryLines({ entries }) {
   return (
-    <Container>
+    <Container >
       {entries.map((entry) => (
         <EnteryLine
           key={entry.id}
