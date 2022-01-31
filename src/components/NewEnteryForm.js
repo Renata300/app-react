@@ -5,24 +5,23 @@ import EntryForm from "./EntryForm";
 import useEntryDetails from "../hooks/useEntryDetails";
 
 function NewEnteryForm() {
-  const {description, setDescription, value, setValue, isExpense, setIsExpense, /*id, setId, date, setDate,*/ addEntry } = useEntryDetails();
+  const {description, setDescription, value, setValue, isExpense, setIsExpense, /*id, setId*/ addEntry, resetValues } = useEntryDetails();
 
   return (
     <Form unstackable>
       <EntryForm
         description={description}
         value={value}
-        /*date={date}*/
         isExpense={isExpense}
-        // id={id}
         setDescription={setDescription}
         setValue={setValue}
-        /*setDate={setDate}*/
         setIsExpense={setIsExpense}
-        // setId={setId}
       />
       <ButtonSaveOrCancel
         addEntry={addEntry}
+        resetValues={resetValues}
+        enableButtonOk={description || value ? false : true}
+        enableButtonCancel={description && value ? false : true}
       />
     </Form>
   );

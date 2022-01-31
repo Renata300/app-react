@@ -5,9 +5,9 @@ import { closeEditModal } from "../actions/modals.actions";
 import useEntryDetails from "../hooks/useEntryDetails";
 import EntryForm from "./EntryForm";
 
-function ModalEdit({ isOpen, description, value, /*date,*/ isExpense, id }) {
+function ModalEdit({ isOpen, description, value, isExpense, id }) {
   const dispatch = useDispatch();
-  const entryUpdate = useEntryDetails(description, value, /*date,*/ isExpense, id); 
+  const entryUpdate = useEntryDetails(description, value, isExpense, id); 
 
   return (
     <Modal open={isOpen}>
@@ -17,14 +17,10 @@ function ModalEdit({ isOpen, description, value, /*date,*/ isExpense, id }) {
         <EntryForm 
           description={entryUpdate.description}
           value={entryUpdate.value}
-          /*date={entryUpdate.date}*/
           isExpense={entryUpdate.isExpense}
-          //id={entryUpdate.id}
           setDescription={entryUpdate.setDescription}
           setValue={entryUpdate.setValue}
-          /*setDate={entryUpdate.setDate}*/
           setIsExpense={entryUpdate.setIsExpense} 
-          //setId={entryUpdate.setId}
         />
       </Modal.Content>
       {/* </Segment> */}

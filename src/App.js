@@ -103,7 +103,6 @@ export default App;
 // TODOs:
 /*
   - melhorar o design da pagina em geral 
-  - nao aceitar que um novo 'edit entry' seja adicionado sem que todos os campos (description e value, no momento) sejam preenchidos
   - so aceitar numeros (pode ser com virgula), valores validos e positivos (pois ja é feito o calculo de adiçao ou decremento, ou seja, se for colocado o sinal de menos, o calculo vai sair errado)
   - colocar spinner, warnings...
   - poder ordenar a lista por data, valor...

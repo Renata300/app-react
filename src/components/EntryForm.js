@@ -4,11 +4,9 @@ import { Checkbox, Form, Segment } from "semantic-ui-react";
 function EntryForm({
   description,
   value,
-  /*date,*/
   isExpense,
   setDescription,
   setValue,
-  /*setDate,*/
   setIsExpense,
 }) {
   return (
@@ -30,45 +28,13 @@ function EntryForm({
           maxLength={9}
           style={{ margin: 1, marginBottom: 5}}
           width={4}
+          type="number"
           label="Value"
           placeholder="100,00"
           icon="dollar"
           iconPosition="left"
           value={value}
           onChange={(event) => setValue(event.target.value)}
-        />
-        <Form.Input
-          minLength={10}
-          maxLength={10}
-          style={{ margin: 1 }}
-          width={5}
-          label="Place"
-          placeholder="Bourbon country"
-          icon="building outline"
-          iconPosition="right"
-          /*value={place}*/
-        />
-        <Form.Input
-          minLength={10}
-          maxLength={10}
-          style={{ margin: 1 }}
-          width={5}
-          label="Who"
-          placeholder="Maria"
-          icon="user"
-          iconPosition="right"
-          /*value="person"*/
-        />
-        <Form.Input
-          minLength={10}
-          maxLength={10}
-          style={{ margin: 1 }}
-          width={5}
-          label="Date"
-          placeholder="25/08/2021"
-          icon="calendar alternate outline"
-          iconPosition="right"
-          /*value="Date"*/
         />
       </Form.Group>
       <Segment
